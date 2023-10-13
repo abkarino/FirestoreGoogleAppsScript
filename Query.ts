@@ -11,16 +11,24 @@ enum FieldFilterOps_ {
   '<=' = 'LESS_THAN_OR_EQUAL',
   '>' = 'GREATER_THAN',
   '>=' = 'GREATER_THAN_OR_EQUAL',
+  '!=' = 'NOT_EQUAL',
   'contains' = 'ARRAY_CONTAINS',
+  'array-contains' = 'ARRAY_CONTAINS',
   'containsany' = 'ARRAY_CONTAINS_ANY',
+  'array-contains-any' = 'ARRAY_CONTAINS_ANY',
   'in' = 'IN',
+  'not-in' = 'NOT_IN',
 }
 /**
  * @see {@link https://firebase.google.com/docs/firestore/reference/rest/v1/StructuredQuery#Operator_2 UnaryFilter Operator}
  */
 enum UnaryFilterOps_ {
   'nan' = 'IS_NAN',
+  'is-nan' = 'IS_NAN',
+  'is-not-nan' = 'IS_NOT_NAN',
   'null' = 'IS_NULL',
+  'is-null' = 'IS_NULL',
+  'is-not-null' = 'IS_NOT_NULL',
 }
 
 /**

@@ -230,7 +230,7 @@ If more specific queries need to be performed, you can use the `query` function 
 const allDocumentsWithTest = firestore.query("FirstCollection").Where("name", "==", "Test!").Execute();
 ```
 
-The `Where` function can take other operators too: `==`, `<`, `<=`, `>`, `>=`, `array-contains`, `array-contains-any`, `in` and `not-in`. (`contains` and `containsany` are also supported as aliases for `array-contains` and `array-contains-any` respectively and are left for backward compatibility.)
+The `Where` function can take other operators too: `==`, `<`, `<=`, `>`, `>=`, `!=`, `array-contains`, `array-contains-any`, `in` and `not-in`. (`contains` and `containsany` are also supported as aliases for `array-contains` and `array-contains-any` respectively and are left for backward compatibility.)
 
 There are a set of unary operands that can be used with `Where` as well: `is-nan`, `is-null`, `is-not-nan`, `is-not-null`. Those operands are not supported by the Firestore JS SDK.
 

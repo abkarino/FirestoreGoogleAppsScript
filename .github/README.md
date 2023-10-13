@@ -24,7 +24,6 @@ In this fork, I added `BatchWrite` functionality both `atomic` and `non-atomic` 
 Since this is a new deployment on GAS, the versioning is reset to `v1`.
 
 ### Future work
-- update the documentation for the `BatchWrite` operations.
 - Add full transaction support
 
 ### Changelog
@@ -35,6 +34,9 @@ Since this is a new deployment on GAS, the versioning is reset to `v1`.
 - Converted private fields into TS 3.8 private fields
 #### V3
 - Added GetBatch functionality.
+#### V4
+- Added additional query operands: `!=`, `not-in`, `is-nan`, `is-not-null`, `is-not-nan`.
+- Aliased `contains` and `constainsany` to `array-contains` and `array-contains-any` respectively to match the Firestore JS SDK.
 
 ## Installation
 In the Google online script editor, select the `Resources` menu item and choose `Libraries...`. In the "Add a library" input box, enter **`1bdxX-1xBtYdDgROfBvJgKkAwRJTbgcTkFE99sVClnMQHQoBE2DLrYiH4`** and click "Add." Choose the most recent version number.

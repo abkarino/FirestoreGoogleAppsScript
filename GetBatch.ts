@@ -12,11 +12,12 @@ class GetBatch {
 
   /**
    * Add a document to the retrive list
-   * @param {string} docPath The document to fetch
+   * @param {string|string[]} docPath One or multiple documents to fetch
    * @returns This `WriteBatch` instance. Used for chaining method calls.
    */
-  add(docPath: string): GetBatch {
-    this.#documents.push(docPath);
+  add(docPath: string | string[]): GetBatch {
+    if (typeof docPath === 'string') this.#documents.push(docPath);
+    else docPath.forEach((docPath) => this.#documents.push(docPath));
     return this;
   }
 

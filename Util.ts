@@ -3,7 +3,7 @@ class Util_ {
    * RegEx test for root path references. Groups relative path for extraction.
    */
   static get regexPath(): RegExp {
-    return /^projects\/.+?\/databases\/\(default\)\/documents\/(.+\/.+)$/;
+    return /^projects\/.+?\/databases\/[^\/]+\/documents\/(.+\/.+)$/;
   }
 
   /**

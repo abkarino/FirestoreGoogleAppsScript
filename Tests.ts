@@ -3,10 +3,12 @@ function StoreCredentials_(): void {
   const email = 'xxx@appspot.gserviceaccount.com';
   const key = '-----BEGIN PRIVATE KEY-----\nLine\nLine\n-----END PRIVATE KEY-----';
   const projectId = 'xxx';
+  const database = '(default)';
   PropertiesService.getUserProperties().setProperties({
     email: email,
     key: key,
     project: projectId,
+    database: database,
   });
 }
 

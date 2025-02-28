@@ -3,10 +3,12 @@ function StoreCredentials_(): void {
   const email = 'xxx@appspot.gserviceaccount.com';
   const key = '-----BEGIN PRIVATE KEY-----\nLine\nLine\n-----END PRIVATE KEY-----';
   const projectId = 'xxx';
+  const database = '(default)';
   PropertiesService.getUserProperties().setProperties({
     email: email,
     key: key,
     project: projectId,
+    database: database,
   });
 }
 
@@ -16,7 +18,7 @@ class Tests implements TestManager {
   fail: Map<string, Error>;
   expected_!: Record<string, Value>;
 
-  constructor(email: string, key: string, projectId: string, apiVersion: Version = 'v1', clearCollection = false) {
+  constructor(email: string, key: string, projectId: string, database = '(default)', clearCollection = false) {
     this.pass = [];
     this.fail = new Map<string, Error>();
 
@@ -26,7 +28,7 @@ class Tests implements TestManager {
 
     /** Test Initializer */
     try {
-      this.db = getFirestore(email, key, projectId, apiVersion);
+      this.db = getFirestore(email, key, projectId, database);
       this.pass.push('Test_Get_Firestore');
     } catch (e) {
       // On failure, fail the remaining tests without execution
@@ -505,7 +507,7 @@ class Tests implements TestManager {
 
 function RunTests_(cacheSeconds: number): Shield {
   const scriptProps = PropertiesService.getUserProperties().getProperties();
-  const tests = new Tests(scriptProps['email'], scriptProps['key'], scriptProps['project'], 'v1');
+  const tests = new Tests(scriptProps['email'], scriptProps['key'], scriptProps['project'], scriptProps['database']);
   const { pass, fail } = tests;
   for (const [func, err] of fail) {
     console.log(`Test Failed: ${func} (${err.message})\n${err.stack}`);
@@ -537,7 +539,7 @@ function cacheResults_(cachedBadge: boolean): string {
 function clearCache(): void {
   /** Allow user to clear Cached Results **/
   const scriptProps = PropertiesService.getUserProperties().getProperties();
-  new Tests(scriptProps['email'], scriptProps['key'], scriptProps['project'], 'v1', true);
+  new Tests(scriptProps['email'], scriptProps['key'], scriptProps['project'], scriptProps['database'], true);
   CacheService.getUserCache()!.remove('Test Results');
 }
 

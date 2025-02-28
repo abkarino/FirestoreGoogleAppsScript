@@ -34,6 +34,9 @@ Since this is a new deployment on GAS, the versioning is reset to `v1`.
 - Added GetBatch functionality.
 - Added additional query operands: `!=`, `not-in`, `is-nan`, `is-not-null`, `is-not-nan`.
 - Aliased `contains` and `constainsany` to `array-contains` and `array-contains-any` respectively to match the Firestore JS SDK.
+#### V2
+- Add multiple database support.
+- Dropped support for changing the firestore api version. It will be using v1 at all times.
 
 ## Installation
 In the Google online script editor, select the `Resources` menu item and choose `Libraries...`. In the "Add a library" input box, enter **`1tUTqe-SN1DmbRoiOQXmuRrbQe4Epx9EbhWwD5Ipm03spoeM9qSMHVAYo`** and click "Add." Choose the most recent version number.
@@ -57,6 +60,14 @@ Now, with your service account client email address `email`, private key `key`, 
 
 ```javascript
 const firestore = FirestoreApp.getFirestore(email, key, projectId);
+```
+
+If you have multiple Firestore databases, you can create multiple instances of FirestoreApp:
+
+```javascript
+// default database is "(default)"
+const defaultDB = FirestoreApp.getFirestore(email, key, projectId);
+const otherDB = FirestoreApp.getFirestore(email, key, projectId, dbName);
 ```
 
 ##### Configuration Template

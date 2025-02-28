@@ -14,14 +14,14 @@ class Firestore implements FirestoreRead, FirestoreWrite, FirestoreDelete {
    * @param {string} email the user email address (for authentication)
    * @param {string} key the user private key (for authentication)
    * @param {string} projectId the Firestore project ID
-   * @param {string} apiVersion [Optional] The Firestore API Version ("v1beta1", "v1beta2", or "v1")
+   * @param {string} database [Optional] The database to use, defaults to '(default)'
    * @return {Firestore} an authenticated interface with a Firestore project (constructor)
    */
-  constructor(email: string, key: string, projectId: string, apiVersion: Version = 'v1') {
+  constructor(email: string, key: string, projectId: string, database = '(default)') {
     // The authentication token used for accessing Firestore
     this.auth = new Auth(email, key);
-    this.basePath = `projects/${projectId}/databases/(default)/documents/`;
-    this.baseUrl = `https://firestore.googleapis.com/${apiVersion}/${this.basePath}`;
+    this.basePath = `projects/${projectId}/databases/${database}/documents/`;
+    this.baseUrl = `https://firestore.googleapis.com/v1/${this.basePath}`;
   }
 
   get authToken(): string {
@@ -165,9 +165,9 @@ type Version = 'v1' | 'v1beta1' | 'v1beta2';
  * @param {string} email the user email address (for authentication)
  * @param {string} key the user private key (for authentication)
  * @param {string} projectId the Firestore project ID
- * @param {string} apiVersion [Optional] The Firestore API Version ("v1beta1", "v1beta2", or "v1")
+ * @param {string} database [Optional] The database to use, defaults to '(default)'
  * @return {Firestore} an authenticated interface with a Firestore project (function)
  */
-function getFirestore(email: string, key: string, projectId: string, apiVersion: Version = 'v1'): Firestore {
-  return new Firestore(email, key, projectId, apiVersion);
+function getFirestore(email: string, key: string, projectId: string, database = '(default)'): Firestore {
+  return new Firestore(email, key, projectId, database);
 }

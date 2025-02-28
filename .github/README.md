@@ -59,6 +59,14 @@ Now, with your service account client email address `email`, private key `key`, 
 const firestore = FirestoreApp.getFirestore(email, key, projectId);
 ```
 
+If you have multiple Firestore databases, you can create multiple instances of FirestoreApp:
+
+```javascript
+// default database is "(default)"
+const defaultDB = FirestoreApp.getFirestore(email, key, projectId);
+const otherDB = FirestoreApp.getFirestore(email, key, projectId, dbName);
+```
+
 ##### Configuration Template
 Here's a quick template to get you started (by replacing `email` and `key` with your values):
 ```javascript

@@ -29,17 +29,14 @@ Since this is a new deployment on GAS, the versioning is reset to `v1`.
 ### Changelog
 #### V1
 - Added WriteBatch functionality.
-#### V2
 - Added `isEmpty` getter to check if the `BatchWrite` has any mutations.
 - Converted private fields into TS 3.8 private fields
-#### V3
 - Added GetBatch functionality.
-#### V4
 - Added additional query operands: `!=`, `not-in`, `is-nan`, `is-not-null`, `is-not-nan`.
 - Aliased `contains` and `constainsany` to `array-contains` and `array-contains-any` respectively to match the Firestore JS SDK.
 
 ## Installation
-In the Google online script editor, select the `Resources` menu item and choose `Libraries...`. In the "Add a library" input box, enter **`1bdxX-1xBtYdDgROfBvJgKkAwRJTbgcTkFE99sVClnMQHQoBE2DLrYiH4`** and click "Add." Choose the most recent version number.
+In the Google online script editor, select the `Resources` menu item and choose `Libraries...`. In the "Add a library" input box, enter **`1tUTqe-SN1DmbRoiOQXmuRrbQe4Epx9EbhWwD5Ipm03spoeM9qSMHVAYo`** and click "Add." Choose the most recent version number.
 
 ## Quick start
 #### Creating a service account
